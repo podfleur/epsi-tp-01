@@ -1,4 +1,4 @@
-# TP1 : Chasse aux bugs Angular
+# TP1 : Chasse aux bugs Angular - Claire Nguyen
 
 ## Contexte
 Vous êtes développeur front-end chez BiblioTech, une entreprise qui a développé une application web de gestion de bibliothèque personnelle. Cette application permet aux utilisateurs de consulter leur collection de livres, d'ajouter de nouveaux livres, et de gérer leurs favoris.
