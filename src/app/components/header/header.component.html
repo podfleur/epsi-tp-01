@@ -1,0 +1,17 @@
+<header class="header">
+  <h1>
+    <a routerLink="/" routerLinkActive="active">
+      <span>{{ title | formatTitle }}</span> <!-- Pipe ajouté pour formater le titre -->
+    </a>
+  </h1>
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/" routerLinkActive="active">Accueil</a>
+      </li>
+      <li>
+        <a routerLink="/books" routerLinkActive="active">Ma Bibliothèque</a>
+      </li>
+    </ul>
+  </nav>
+</header>

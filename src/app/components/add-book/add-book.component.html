@@ -1,10 +1,44 @@
 <div class="form-container">
   <h1>Ajouter un livre</h1>
   <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="title" placeholder="Titre du livre">
-    <input type="text" formControlName="author" placeholder="Nom de l'auteur">
-    <input type="text" formControlName="description" placeholder="Description du livre">
-    <input type="text" formControlName="category" placeholder="Catégorie du livre">
+    <input type="text" formControlName="title" placeholder="Titre du livre" required>
+    <div *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched" class="error">
+      <small *ngIf="bookForm.get('title')?.errors?.['required']">Veuillez renseigner le titre.</small>
+      <small *ngIf="bookForm.get('title')?.errors?.['minlength']">Le titre doit comporter au moins 3 caractères.</small>
+      <small *ngIf="bookForm.get('title')?.errors?.['maxlength']">Le titre ne doit pas dépasser 50 caractères.</small>
+    </div>
+
+    <input type="text" formControlName="author" placeholder="Nom de l'auteur" required>
+    <div *ngIf="bookForm.get('author')?.invalid && bookForm.get('author')?.touched" class="error">
+      <small *ngIf="bookForm.get('author')?.errors?.['required']">Veuillez renseigner l'auteur.</small>
+      <small *ngIf="bookForm.get('author')?.errors?.['minlength']">Le nom de l'auteur doit comporter au moins 3 caractères.</small>
+      <small *ngIf="bookForm.get('author')?.errors?.['maxlength']">Le nom de l'auteur ne doit pas dépasser 50 caractères.</small>
+    </div>
+
+    <input type="text" formControlName="description" placeholder="Description du livre" required>
+    <div *ngIf="bookForm.get('description')?.invalid && bookForm.get('description')?.touched" class="error">
+      <small *ngIf="bookForm.get('description')?.errors?.['required']">Veuillez renseigner la description.</small>
+      <small *ngIf="bookForm.get('description')?.errors?.['minlength']">La description doit comporter au moins 10 caractères.</small>
+      <small *ngIf="bookForm.get('description')?.errors?.['maxlength']">La description ne doit pas dépasser 200 caractères.</small>
+    </div>
+
+    <input type="text" formControlName="category" placeholder="Catégorie du livre" required>
+    <div *ngIf="bookForm.get('category')?.invalid && bookForm.get('category')?.touched" class="error">
+      <small *ngIf="bookForm.get('category')?.errors?.['required']">Veuillez renseigner la catégorie.</small>
+      <small *ngIf="bookForm.get('category')?.errors?.['minlength']">La catégorie doit comporter au moins 3 caractères.</small>
+      <small *ngIf="bookForm.get('category')?.errors?.['maxlength']">La catégorie ne doit pas dépasser 20 caractères.</small>
+    </div>
+
+    <input type="number" formControlName="rating" placeholder="Note (1-5)" min="1" max="5" required>
+    <div *ngIf="bookForm.get('rating')?.invalid && bookForm.get('rating')?.touched" class="error">
+      <small *ngIf="bookForm.get('rating')?.errors?.['required']">Veuillez renseigner la note.</small>
+      <small *ngIf="bookForm.get('rating')?.errors?.['min']">La note doit être au moins 1.</small>
+      <small *ngIf="bookForm.get('rating')?.errors?.['max']">La note ne doit pas dépasser 5.</small>
+    </div>
+
+    <label>
+      <input type="checkbox" formControlName="isFavorite"> Ajouter aux favoris
+    </label>
     <button type="submit">Ajouter le livre</button>
   </form>
 </div>

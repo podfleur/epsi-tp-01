@@ -8,6 +8,11 @@ export class HighlightDirective   {
   @Input() appHighlight: boolean = false;
   
   constructor(private el: ElementRef) {}
-
-  // TODO 24: Modifier la directive pour que le texte soit en gras si l'input est true et appliquer cela au champ title du livre sur les pages book-detail et book-list
+  ngOnChanges(): void {
+    if (this.appHighlight) {
+      this.el.nativeElement.style.fontWeight = 'bold';
+    } else {
+      this.el.nativeElement.style.fontWeight = 'normal';
+    }
+  }
 }
